@@ -1,0 +1,10 @@
+from pathlib import Path
+s=Path('D:/kuda-load-testing/stand')
+p=(s/'run_continuous_capacity.py').read_text(encoding='utf8').replace("'host': '127.0.0.1'","'host': '192.168.0.213'").replace("'-Jhost=127.0.0.1'","'-Jhost=192.168.0.213'").replace("backend and generator share this PC","backend on laptop 192.168.0.213; generator on desktop").replace("'-local-continuous'","'-laptop-capacity'")
+(s/'run_laptop_capacity.py').write_text(p,encoding='utf8')
+p=(s/'prometheus.yml').read_text()
+(s/'prometheus.before-laptop.yml').write_text(p)
+p=p.replace("['192.168.0.242:8787']","['192.168.0.213:8787']").replace("['192.168.0.242:9274']","['192.168.0.213:9273']").replace("['192.168.0.242:9187']","['192.168.0.213:9187']")
+p=p.replace("job_name: stand-windows\n    static_configs: [{targets: ['192.168.0.242:9183']}]","job_name: stand-windows\n    static_configs: [{targets: ['192.168.0.213:9182']}]")
+p=p.replace("  - job_name: postgres-diagnostics\n    scrape_interval: 2s\n    static_configs: [{targets: ['host.docker.internal:9200']}]\n","")
+(s/'prometheus.yml').write_text(p)

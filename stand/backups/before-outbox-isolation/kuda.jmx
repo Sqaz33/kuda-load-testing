@@ -1,0 +1,2278 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Куда | Комнаты, голоса и SSE" enabled="true">
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments" />
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Параметры | Адрес, время, потоки" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">${__P(protocol,http)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="host" elementType="Argument">
+            <stringProp name="Argument.name">host</stringProp>
+            <stringProp name="Argument.value">${__P(host,192.168.0.242)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">${__P(port,8787)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="mode" elementType="Argument">
+            <stringProp name="Argument.name">mode</stringProp>
+            <stringProp name="Argument.value">${__P(mode,load)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="partySize" elementType="Argument">
+            <stringProp name="Argument.name">partySize</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="stepSeconds" elementType="Argument">
+            <stringProp name="Argument.name">stepSeconds</stringProp>
+            <stringProp name="Argument.value">${__P(stepSeconds,600)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="pollDelayMs" elementType="Argument">
+            <stringProp name="Argument.name">pollDelayMs</stringProp>
+            <stringProp name="Argument.value">${__P(pollDelayMs,4000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="roomViewSeconds" elementType="Argument">
+            <stringProp name="Argument.name">roomViewSeconds</stringProp>
+            <stringProp name="Argument.value">${__P(roomViewSeconds,180)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="joinTimeoutSeconds" elementType="Argument">
+            <stringProp name="Argument.name">joinTimeoutSeconds</stringProp>
+            <stringProp name="Argument.value">${__P(joinTimeoutSeconds,60)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="votingTimeoutSeconds" elementType="Argument">
+            <stringProp name="Argument.name">votingTimeoutSeconds</stringProp>
+            <stringProp name="Argument.value">${__P(votingTimeoutSeconds,120)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="drainSeconds" elementType="Argument">
+            <stringProp name="Argument.name">drainSeconds</stringProp>
+            <stringProp name="Argument.value">${__P(drainSeconds,300)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="responseTimeoutMs" elementType="Argument">
+            <stringProp name="Argument.name">responseTimeoutMs</stringProp>
+            <stringProp name="Argument.value">${__P(responseTimeoutMs,10000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="votePauseMs" elementType="Argument">
+            <stringProp name="Argument.name">votePauseMs</stringProp>
+            <stringProp name="Argument.value">${__P(votePauseMs,4000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="voteSpreadMs" elementType="Argument">
+            <stringProp name="Argument.name">voteSpreadMs</stringProp>
+            <stringProp name="Argument.value">${__P(voteSpreadMs,3000)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="outDir" elementType="Argument">
+            <stringProp name="Argument.name">outDir</stringProp>
+            <stringProp name="Argument.value">${__P(outDir,~/out)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="workerRunning" elementType="Argument">
+            <stringProp name="Argument.name">workerRunning</stringProp>
+            <stringProp name="Argument.value">true</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="smokeRooms" elementType="Argument">
+            <stringProp name="Argument.name">smokeRooms</stringProp>
+            <stringProp name="Argument.value">${__P(smokeRooms,1)}</stringProp>
+          </elementProp>
+          <elementProp name="stageRates" elementType="Argument">
+            <stringProp name="Argument.name">stageRates</stringProp>
+            <stringProp name="Argument.value">${__P(stageRates,2|4|8|16)}</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree />
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP | Адрес API" enabled="true">
+        <stringProp name="HTTPSampler.domain">${host}</stringProp>
+        <stringProp name="HTTPSampler.port">${port}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout">5000</stringProp>
+        <stringProp name="HTTPSampler.response_timeout">${responseTimeoutMs}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+          <collectionProp name="Arguments.arguments" />
+        </elementProp>
+      </ConfigTestElement>
+      <hashTree />
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="Подготовка | Очереди заданий" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">stoptestnow</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Инициализировать прогон" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="filename" />
+          <stringProp name="parameters" />
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.atomic.AtomicInteger
+import org.apache.jmeter.services.FileServer
+def mode = vars.get('mode')
+def rates=vars.get('stageRates').split('\\|').collect { it.toInteger() }
+assert rates.every { it&gt;0 } &amp;&amp; vars.get('stepSeconds').toInteger()&gt;0
+int duration = mode == 'smoke' ? vars.get('smokeRooms').toInteger() : vars.get('stepSeconds').toInteger()*rates.size()
+boolean continuous=mode!='smoke' &amp;&amp; props.getProperty('continuous','false').toBoolean()
+int arrivalCeiling=props.getProperty('arrivalCeiling','512').toInteger()
+if(continuous) duration=props.getProperty('loadSeconds','3390').toInteger()
+def schedule = mode == 'smoke' ? 'rate(1/sec) even_arrivals('+duration+' sec) rate(1/sec)' :
+    rates.collect { 'rate('+it+'/min) even_arrivals('+vars.get('stepSeconds')+' sec) rate('+it+'/min)' }.join(' ')
+if(continuous) schedule='rate('+arrivalCeiling+'/min) even_arrivals('+duration+' sec) rate('+arrivalCeiling+'/min)'
+schedule += ' pause('+vars.get('drainSeconds')+' sec)'
+new org.apache.jmeter.threads.openmodel.ScheduleParser(schedule).parse()
+File base=new File(FileServer.getFileServer().getBaseDir())
+String path=vars.get('outDir')
+File output=path.startsWith('~/') ? new File(base,path.substring(2)) : new File(path)
+if(!output.isAbsolute()) output=new File(base,path)
+output.mkdirs()
+def summary=new File(output,'rooms.csv')
+if(!summary.exists() || summary.length()==0) summary.setText('roomId,result,winnerId,elapsedMs,reason\n','UTF-8')
+props.put('kudaLoad',[members:new LinkedBlockingQueue(20000),polls:new LinkedBlockingQueue(20000),
+ streams:new AtomicInteger(),streamErrors:new AtomicInteger(),streamReconnects:new AtomicInteger(),streamEvents:new AtomicInteger(),active:new AtomicInteger(),started:new AtomicInteger(),completed:new AtomicInteger(),failed:new AtomicInteger(),
+ end:System.currentTimeMillis()+duration*1000L,
+ hardEnd:System.currentTimeMillis()+(duration+vars.get('drainSeconds').toInteger())*1000L,
+ continuous:continuous,arrivalCeiling:arrivalCeiling,targetRate:new AtomicInteger(rates[0]),workerRate:new AtomicInteger(rates[0]),arrivalCredit:arrivalCeiling-rates[0],arrivalLock:new Object(),controlNext:0L,controlFile:new File(output,'load-control.json'),schedule:schedule,summary:summary,lock:new Object(),rates:rates,stepSeconds:vars.get('stepSeconds').toInteger(),phaseStart:System.currentTimeMillis(),durationSeconds:duration+vars.get('drainSeconds').toInteger(),telemetry:new File(output,'telemetry.json'),telemetryNext:new java.util.concurrent.atomic.AtomicLong(),stopArrivals:new java.util.concurrent.atomic.AtomicBoolean(),stopApplied:new java.util.concurrent.atomic.AtomicBoolean(),stopFile:new File(output,'stop-arrivals')])
+props.put('kudaMeetingDate',java.time.LocalDate.now(java.time.ZoneId.of('Europe/Volgograd')).plusDays(2).toString())
+log.info('Куда: '+mode+'; '+schedule)
+SampleResult.setIgnore()
+</stringProp>
+        </JSR223Sampler>
+        <hashTree />
+      </hashTree>
+      <org.apache.jmeter.threads.openmodel.OpenModelThreadGroup guiclass="org.apache.jmeter.threads.openmodel.gui.OpenModelThreadGroupGui" testclass="org.apache.jmeter.threads.openmodel.OpenModelThreadGroup" testname="Организаторы | Ступени комнат в минуту" enabled="true">
+        <stringProp name="OpenModelThreadGroup.schedule">${__groovy(props.get('kudaLoad').schedule)}</stringProp>
+        <stringProp name="OpenModelThreadGroup.random_seed">42</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+      </org.apache.jmeter.threads.openmodel.OpenModelThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Новая компания" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="filename" />
+          <stringProp name="parameters">host-begin</stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'host-begin':
+  if(run.stopFile.exists()) { run.stopArrivals.set(true); SampleResult.setIgnore(); ctx.getThread().stop(); return }
+  if(run.continuous) {
+   boolean admitted=false
+   synchronized(run.arrivalLock) {
+    long now=System.currentTimeMillis()
+    if(now&gt;=run.controlNext) {
+     run.controlNext=now+250L
+     if(run.controlFile.exists()) {
+      def control=new groovy.json.JsonSlurper().parse(run.controlFile,'UTF-8')
+      int rate=control.rate as int
+      if(rate&lt;0 || rate&gt;run.arrivalCeiling) throw new IllegalArgumentException('Invalid arrival rate: '+rate)
+      run.targetRate.set(rate)
+      run.workerRate.set(Math.max(run.workerRate.get(),rate))
+     }
+    }
+    // Evenly admit only the requested fraction of potential Open Model starts.
+    // Rejected starts perform no HTTP and create no business scenario or sample.
+    run.arrivalCredit+=run.targetRate.get()
+    if(run.targetRate.get()&gt;0 &amp;&amp; run.arrivalCredit&gt;=run.arrivalCeiling) {
+     run.arrivalCredit-=run.arrivalCeiling; admitted=true
+    }
+   }
+   if(!admitted) { SampleResult.setIgnore(); ctx.getThread().stop(); return }
+  }
+  vars.put('actorRole','host')
+  run.active.incrementAndGet()
+  run.started.incrementAndGet()
+  vars.putObject('roomJob',null)
+  room=null
+  vars.put('ok','true')
+  vars.put('reason','')
+  vars.put('authToken','')
+  vars.put('roomId','')
+  vars.put('startedAt',System.currentTimeMillis().toString())
+  vars.put('guestName','НТ организатор '+UUID.randomUUID().toString().take(8))
+  vars.put('createKey',UUID.randomUUID().toString())
+  def c=[city:'Волгоград',timeZone:'Europe/Volgograd',date:props.get('kudaMeetingDate'),
+   time:'19:30',area:[type:'district',district:'Центральный'],categories:['bar','cafe','restaurant'],
+   budgetMax:2000,partySize:4,deadlineMinutes:30,exclusions:[]]
+  vars.put('constraintsJson',JsonOutput.toJson(c))
+  vars.put('createJson',JsonOutput.toJson([constraints:c]))
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+        </JSR223Sampler>
+        <hashTree />
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Сценарий организатора | Пока нет ошибки" enabled="true">
+          <stringProp name="IfController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; (vars.getObject('roomJob') == null || !vars.getObject('roomJob').cancelled.get()))}</stringProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+          <boolProp name="IfController.evaluateAll">true</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Вход | POST guest" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/auth/guest</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{"name":"${guestName}"}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Вход | POST guest" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">guest</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'guest':
+  assert body.token &amp;&amp; body.user?.id : 'Нет токена или пользователя'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь authToken" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">authToken</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues" />
+            </JSONPostProcessor>
+            <hashTree />
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь userId" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">userId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.user.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues" />
+            </JSONPostProcessor>
+            <hashTree />
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Создание комнаты" enabled="true">
+            <boolProp name="TransactionController.parent">false</boolProp>
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Создание | Проверять успех каждого шага" enabled="true">
+              <stringProp name="IfController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; (vars.getObject('roomJob') == null || !vars.getObject('roomJob').cancelled.get()))}</stringProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+              <boolProp name="IfController.evaluateAll">true</boolProp>
+            </IfController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Каталог | POST estimate" enabled="true">
+                <stringProp name="HTTPSampler.path">/v1/catalog/estimate</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${constraintsJson}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Authorization" elementType="Header">
+                      <stringProp name="Header.name">Authorization</stringProp>
+                      <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree />
+                <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Каталог | POST estimate" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="filename" />
+                  <stringProp name="parameters">estimate</stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'estimate':
+  assert body.count&gt;=body.minimum : 'Недостаточно заведений'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+                </JSR223Assertion>
+                <hashTree />
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Каталог | Повторная оценка фильтров" enabled="true">
+                <stringProp name="HTTPSampler.path">/v1/catalog/estimate</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${constraintsJson}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Authorization" elementType="Header">
+                      <stringProp name="Header.name">Authorization</stringProp>
+                      <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree />
+                <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Каталог | Повторная оценка фильтров" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="filename" />
+                  <stringProp name="parameters">estimate</stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'estimate':
+  assert body.count&gt;=body.minimum : 'Недостаточно заведений'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+                </JSR223Assertion>
+                <hashTree />
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Комната | POST rooms" enabled="true">
+                <stringProp name="HTTPSampler.path">/v1/rooms</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${createJson}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Authorization" elementType="Header">
+                      <stringProp name="Header.name">Authorization</stringProp>
+                      <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                    </elementProp>
+                    <elementProp name="Idempotency-Key" elementType="Header">
+                      <stringProp name="Header.name">Idempotency-Key</stringProp>
+                      <stringProp name="Header.value">${createKey}</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree />
+                <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Комната | POST rooms" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="filename" />
+                  <stringProp name="parameters">create</stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'create':
+  assert body.id &amp;&amp; body.inviteToken &amp;&amp; body.hostId==vars.get('userId') &amp;&amp; body.status=='waiting' : 'Некорректная комната'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+                </JSR223Assertion>
+                <hashTree />
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь roomId" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">roomId</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues" />
+                </JSONPostProcessor>
+                <hashTree />
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь inviteToken" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">inviteToken</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.inviteToken</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues" />
+                </JSONPostProcessor>
+                <hashTree />
+              </hashTree>
+            </hashTree>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Передать три приглашения" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">publish</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'publish':
+  room=[streams:new java.util.concurrent.ConcurrentHashMap(),id:vars.get('roomId'),invite:vars.get('inviteToken'),
+   end:System.currentTimeMillis()+vars.get('roomViewSeconds').toLong()*1000L,
+   cancelled:new AtomicBoolean(),winner:new AtomicReference(''),
+   pending:new AtomicInteger(),hostPaused:new AtomicBoolean()]
+  vars.putObject('roomJob',room)
+  for(int i=1;i&lt;=3;i++) {
+   if(!run.members.offer([room:room,number:i,queuedAt:System.currentTimeMillis()],2,TimeUnit.SECONDS)) throw new IllegalStateException('Очередь участников переполнена')
+  }
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SSE | Подписать организатора" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">poll-job</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'poll-job':
+  room.pending.incrementAndGet()
+  if(!run.polls.offer([room:room,queuedAt:System.currentTimeMillis(),token:vars.get('authToken'),userId:vars.get('userId'),
+      host:vars.get('actorRole')=='host'],2,TimeUnit.SECONDS)) {
+   room.pending.decrementAndGet();throw new IllegalStateException('Очередь опроса переполнена')
+  }
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Событие | Приглашение отправлено" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/events</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{"name":"invite_shared","properties":{"roomId":"${roomId}"}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Событие | Приглашение отправлено" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">event</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Ожидание | members" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">wait-members</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'wait-members':
+  vars.put('waitMore','true')
+  vars.put('waitKind',action)
+  long seconds=action=='wait-members' ? vars.get('joinTimeoutSeconds').toLong() : vars.get('votingTimeoutSeconds').toLong()
+  vars.put('waitUntil',(System.currentTimeMillis()+seconds*1000L).toString())
+  if(action=='wait-finished') room.hostPaused.set(true)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Ждать | members" enabled="true">
+            <stringProp name="WhileController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; !vars.getObject('roomJob').cancelled.get() &amp;&amp; vars.get('waitMore') == 'true' &amp;&amp; System.currentTimeMillis() &lt; vars.get('waitUntil').toLong())}</stringProp>
+          </WhileController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SSE | Ждать members" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters" />
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def room=vars.getObject('roomJob')
+long deadline=vars.get('waitUntil').toLong()
+def state=null;boolean ready=false
+while(!room.cancelled.get() &amp;&amp; System.currentTimeMillis()&lt;deadline){
+ state=room.streams.get(vars.get('userId'))
+ ready=state!=null &amp;&amp; (state.members.size()&gt;=4)
+ if(ready)break
+ Thread.sleep(100)
+}
+vars.put('waitMore',(!ready).toString())
+SampleResult.setResponseCode(ready?'200':'SSE_TIMEOUT');SampleResult.setSuccessful(ready)
+SampleResult.setResponseData(groovy.json.JsonOutput.toJson(state ?: [:]),'UTF-8')
+</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Комната | Ждать members" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters">members</stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'members':
+  assert body.id==vars.get('roomId') : 'Ответ другой комнаты'
+  vars.put('waitMore',(body.members.size()&lt;4).toString())
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+              </JSR223Assertion>
+              <hashTree />
+            </hashTree>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Проверить предел ожидания" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">check-wait</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'check-wait':
+  if(vars.get('waitMore')=='true') throw new IllegalStateException('Тайм-аут '+vars.get('waitKind'))
+  room.hostPaused.set(false)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Комната | POST start" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/rooms/${roomId}/start</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Комната | POST start" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">start</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'start':
+  assert body.id==vars.get('roomId') : 'Ответ другой комнаты'
+  if(args[0]=='started') {
+   vars.put('waitMore',(body.status=='waiting').toString())
+   if(body.status=='waiting') break
+  }
+  assert body.status=='swiping' &amp;&amp; body.roundCandidateIds.size()==12 : 'Нет раунда из 12 карточек'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь candidate" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">candidate</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.roundCandidateIds[*]</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues" />
+            </JSONPostProcessor>
+            <hashTree />
+          </hashTree>
+          <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Голосование | Карточки раунда" enabled="true">
+            <stringProp name="ForeachController.inputVal">candidate</stringProp>
+            <stringProp name="ForeachController.returnVal">venueId</stringProp>
+            <stringProp name="ForeachController.startIndex">0</stringProp>
+            <stringProp name="ForeachController.useSeparator">true</stringProp>
+          </ForeachController>
+          <hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Голосовать | Пока нет ошибки" enabled="true">
+              <stringProp name="IfController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; (vars.getObject('roomJob') == null || !vars.getObject('roomJob').cancelled.get()))}</stringProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+              <boolProp name="IfController.evaluateAll">true</boolProp>
+            </IfController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Голос | PUT votes" enabled="true">
+                <stringProp name="HTTPSampler.path">/v1/rooms/${roomId}/votes</stringProp>
+                <stringProp name="HTTPSampler.method">PUT</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{"venueId":"${venueId}","value":"${voteValue}"}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json</stringProp>
+                    </elementProp>
+                    <elementProp name="Authorization" elementType="Header">
+                      <stringProp name="Header.name">Authorization</stringProp>
+                      <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                    </elementProp>
+                    <elementProp name="Idempotency-Key" elementType="Header">
+                      <stringProp name="Header.name">Idempotency-Key</stringProp>
+                      <stringProp name="Header.value">vote:${roomId}:${userId}:${venueId}</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree />
+                <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Голос | PUT votes" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="filename" />
+                  <stringProp name="parameters">vote</stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'vote':
+  assert body.id==vars.get('roomId') &amp;&amp; body.ownVotes[vars.get('venueId')]==vars.get('voteValue') : 'Голос не сохранился'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+                </JSR223Assertion>
+                <hashTree />
+                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Выбрать like или dislike" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="filename" />
+                  <stringProp name="parameters" />
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">def random=java.util.concurrent.ThreadLocalRandom.current()
+vars.put('voteValue',vars.get('venueId')==vars.get('candidate_1') || random.nextBoolean() ? 'like' : 'dislike')
+</stringProp>
+                </JSR223PreProcessor>
+                <hashTree />
+                <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Просмотр карточки | Случайная пауза" enabled="true">
+                  <stringProp name="ConstantTimer.delay">${votePauseMs}</stringProp>
+                  <stringProp name="RandomTimer.range">${voteSpreadMs}</stringProp>
+                </UniformRandomTimer>
+                <hashTree />
+              </hashTree>
+            </hashTree>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Ожидание | finished" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">wait-finished</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'wait-finished':
+  vars.put('waitMore','true')
+  vars.put('waitKind',action)
+  long seconds=action=='wait-members' ? vars.get('joinTimeoutSeconds').toLong() : vars.get('votingTimeoutSeconds').toLong()
+  vars.put('waitUntil',(System.currentTimeMillis()+seconds*1000L).toString())
+  if(action=='wait-finished') room.hostPaused.set(true)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Ждать | finished" enabled="true">
+            <stringProp name="WhileController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; !vars.getObject('roomJob').cancelled.get() &amp;&amp; vars.get('waitMore') == 'true' &amp;&amp; System.currentTimeMillis() &lt; vars.get('waitUntil').toLong())}</stringProp>
+          </WhileController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SSE | Ждать finished" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters" />
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def room=vars.getObject('roomJob')
+long deadline=vars.get('waitUntil').toLong()
+def state=null;boolean ready=false
+while(!room.cancelled.get() &amp;&amp; System.currentTimeMillis()&lt;deadline){
+ state=room.streams.get(vars.get('userId'))
+ ready=state!=null &amp;&amp; (state.members.every{it.finished})
+ if(ready)break
+ Thread.sleep(100)
+}
+vars.put('waitMore',(!ready).toString())
+SampleResult.setResponseCode(ready?'200':'SSE_TIMEOUT');SampleResult.setSuccessful(ready)
+SampleResult.setResponseData(groovy.json.JsonOutput.toJson(state ?: [:]),'UTF-8')
+</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Комната | Ждать finished" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters">finished</stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'finished':
+  assert body.id==vars.get('roomId') : 'Ответ другой комнаты'
+  vars.put('waitMore',body.members.any{!it.finished}.toString())
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+              </JSR223Assertion>
+              <hashTree />
+            </hashTree>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Проверить предел ожидания" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">check-wait</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'check-wait':
+  if(vars.get('waitMore')=='true') throw new IllegalStateException('Тайм-аут '+vars.get('waitKind'))
+  room.hostPaused.set(false)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Комната | POST close-voting" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/rooms/${roomId}/close-voting</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Комната | POST close-voting" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">close</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'close':
+  assert body.status=='deciding' &amp;&amp; body.matches : 'Нет совпадений'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь winnerId" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">winnerId</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.matches[0].venue.id</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues" />
+            </JSONPostProcessor>
+            <hashTree />
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Результат | PUT winner" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/rooms/${roomId}/winner</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{"venueId":"${winnerId}"}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Результат | PUT winner" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">winner</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'winner':
+  assert body.status=='selected' &amp;&amp; body.winner?.id==vars.get('winnerId') : 'Не сохранился победитель'
+  room.winner.set(body.winner.id)
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Комната | GET result" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/rooms/${roomId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments" />
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверить результат комнаты" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters" />
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">def b=new groovy.json.JsonSlurper().parseText(prev.responseDataAsString); if(prev.responseCode!='200'||b.id!=vars.get('roomId')||b.winner?.id!=vars.getObject('roomJob').winner.get()){AssertionResult.setFailure(true);AssertionResult.setFailureMessage('Результат комнаты отличается');vars.getObject('roomJob').cancelled.set(true)}</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Событие | Открыть карту" enabled="true">
+            <stringProp name="HTTPSampler.path">/v1/events</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{"name":"booking_action","properties":{"roomId":"${roomId}","venueId":"${winnerId}","action":"map"}}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="Authorization" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree />
+            <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Событие | Открыть карту" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">event</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+            </JSR223Assertion>
+            <hashTree />
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Дождаться просмотра результата всеми" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">hold</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'hold':
+  long limit=room.end+vars.get('pollDelayMs').toLong()+vars.get('responseTimeoutMs').toLong()+5000
+  while(!room.cancelled.get() &amp;&amp; room.pending.get()&gt;0 &amp;&amp; System.currentTimeMillis()&lt;limit) Thread.sleep(200)
+  if(room.cancelled.get() || room.pending.get()&gt;0) throw new IllegalStateException('Не все пользователи подтвердили результат')
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Итог компании в rooms.csv" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="filename" />
+          <stringProp name="parameters">host-finalize</stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'host-finalize':
+  boolean success=vars.get('ok')=='true' &amp;&amp; room!=null &amp;&amp; !room.cancelled.get() &amp;&amp; room.winner.get()
+  if(success) run.completed.incrementAndGet()
+  else {
+   run.failed.incrementAndGet()
+   if(room!=null) room.cancelled.set(true)
+  }
+  def row=[vars.get('roomId') ?: '',success?'success':'failed',room?.winner?.get() ?: '',
+    System.currentTimeMillis()-vars.get('startedAt').toLong(),vars.get('reason') ?: (success ? '' : 'Ошибка связанного участника или фонового опроса')]
+    .collect { '"'+it.toString().replace('"','""').replaceAll('[\\r\\n]',' ')+'"' }.join(',')
+  synchronized(run.lock) { run.summary.append(row+'\n','UTF-8') }
+  run.active.decrementAndGet()
+  run.telemetryNext.set(0L)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+        </JSR223Sampler>
+        <hashTree />
+      </hashTree>
+      <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="Участники | Динамический пул" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController" />
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="TargetLevel">${__groovy(def r=props.get('kudaLoad');if(System.currentTimeMillis()&gt;=r.hardEnd || System.currentTimeMillis()&gt;r.end &amp;&amp; r.active.get()==0 &amp;&amp; r.members.isEmpty() &amp;&amp; r.polls.isEmpty())return 0;int i=(int)((System.currentTimeMillis()-r.phaseStart)/(r.stepSeconds*1000L));if(i&gt;=r.rates.size())i=r.rates.size()-1;int n=(int)Math.ceil((r.continuous?r.workerRate.get():r.rates[i])*5.85);int cap=(props.getProperty('participantThreads')?:'180').toInteger();n&gt;cap?cap:n)}</stringProp>
+        <stringProp name="RampUp" />
+        <stringProp name="Steps" />
+        <stringProp name="Hold">${__groovy(props.get('kudaLoad').durationSeconds)}</stringProp>
+        <stringProp name="LogFilename" />
+        <stringProp name="Iterations">1</stringProp>
+        <boolProp name="same_user_on_next_iteration">true</boolProp>
+        <stringProp name="Unit">S</stringProp>
+      </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+      <hashTree>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Пока есть работа" enabled="true">
+          <stringProp name="WhileController.condition">${workerRunning}</stringProp>
+        </WhileController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Забрать приглашение" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">take-member</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+
+if(run.stopFile.exists() &amp;&amp; !run.stopApplied.getAndSet(true)) {
+ run.end=System.currentTimeMillis(); run.hardEnd=run.end+vars.get('drainSeconds').toLong()*1000L
+}
+// Snapshot every ten seconds; this does not add HTTP traffic.
+def telemetryNow=System.currentTimeMillis()
+def telemetryNext=run.telemetryNext.get()
+if(telemetryNow&gt;=telemetryNext &amp;&amp; run.telemetryNext.compareAndSet(telemetryNext,telemetryNow+10000L)) {
+ def memberHead=run.members.peek();def pollHead=run.polls.peek()
+ def data=[active_streams:run.streams.get(),stream_errors:run.streamErrors.get(),stream_reconnects:run.streamReconnects.get(),stream_events:run.streamEvents.get(),timestamp_seconds:telemetryNow/1000d,phase_started_seconds:run.phaseStart/1000d,active_rooms:run.active.get(),started_rooms:run.started.get(),completed_rooms:run.completed.get(),failed_rooms:run.failed.get(),member_queue:run.members.size(),poll_queue:run.polls.size(),member_queue_oldest_seconds:memberHead==null?0:Math.max(0L,telemetryNow-memberHead.queuedAt)/1000d,poll_queue_oldest_seconds:pollHead==null?0:Math.max(0L,telemetryNow-pollHead.queuedAt)/1000d]
+ synchronized(run.lock) { run.telemetry.setText(JsonOutput.toJson(data),'UTF-8') }
+}
+
+ switch(action) {
+ case 'take-member':
+  def queue=action=='take-member' ? run.members : run.polls
+  if(System.currentTimeMillis()&gt;=run.hardEnd){vars.put('workerRunning','false');vars.put('hasJob','false');SampleResult.setIgnore();return}
+  if(System.currentTimeMillis()&gt;run.end &amp;&amp; run.active.get()==0 &amp;&amp; queue.isEmpty()) {
+   vars.put('workerRunning','false'); vars.put('hasJob','false'); break
+  }
+  def job=queue.poll(5,TimeUnit.SECONDS)
+  vars.put('hasJob','false')
+  if(job==null) break
+  room=job.room
+  vars.putObject('roomJob',room)
+  if(room.cancelled.get()) {
+   if(action=='take-poll') room.pending.decrementAndGet()
+   break
+  }
+  vars.put('hasJob','true');vars.put('ok','true')
+  vars.put('roomId',room.id);vars.put('inviteToken',room.invite)
+  if(action=='take-member') {
+   vars.put('actorRole','member')
+   vars.put('authToken','')
+   vars.put('guestName','НТ участник '+job.number+' '+UUID.randomUUID().toString().take(8))
+  } else {
+   vars.put('authToken',job.token);vars.put('userId',job.userId)
+   vars.put('hostPoll',job.host.toString());vars.put('sawWinner','false')
+  }
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Участник | Есть задание и нет ошибки" enabled="true">
+            <stringProp name="IfController.condition">${__groovy(vars.get('hasJob') == 'true' &amp;&amp; vars.get('ok') == 'true' &amp;&amp; (vars.getObject('roomJob') == null || !vars.getObject('roomJob').cancelled.get()))}</stringProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+            <boolProp name="IfController.evaluateAll">true</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Приглашение | GET preview" enabled="true">
+              <stringProp name="HTTPSampler.path">/v1/invites/${inviteToken}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments" />
+              </elementProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree />
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Приглашение | GET preview" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters">preview</stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'preview':
+  assert body.room?.id==vars.get('roomId') &amp;&amp; body.access!='closed' : 'Неверное приглашение'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+              </JSR223Assertion>
+              <hashTree />
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Событие | Приглашение открыто" enabled="true">
+              <stringProp name="HTTPSampler.path">/v1/events</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{"name":"invite_opened","properties":{"roomId":"${roomId}"}}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree />
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Событие | Приглашение открыто" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters">event</stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+              </JSR223Assertion>
+              <hashTree />
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Вход | POST guest" enabled="true">
+              <stringProp name="HTTPSampler.path">/v1/auth/guest</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{"name":"${guestName}"}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree />
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Вход | POST guest" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters">guest</stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'guest':
+  assert body.token &amp;&amp; body.user?.id : 'Нет токена или пользователя'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+              </JSR223Assertion>
+              <hashTree />
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь authToken" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">authToken</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues" />
+              </JSONPostProcessor>
+              <hashTree />
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь userId" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">userId</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.user.id</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues" />
+              </JSONPostProcessor>
+              <hashTree />
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Приглашение | POST join" enabled="true">
+              <stringProp name="HTTPSampler.path">/v1/invites/${inviteToken}/join</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="Authorization" elementType="Header">
+                    <stringProp name="Header.name">Authorization</stringProp>
+                    <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree />
+              <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Приглашение | POST join" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters">join</stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'join':
+  assert body.id==vars.get('roomId') &amp;&amp; body.members.any{it.id==vars.get('userId')} : 'Участник не вошёл'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+              </JSR223Assertion>
+              <hashTree />
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SSE | Подписать участника" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">poll-job</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'poll-job':
+  room.pending.incrementAndGet()
+  if(!run.polls.offer([room:room,queuedAt:System.currentTimeMillis(),token:vars.get('authToken'),userId:vars.get('userId'),
+      host:vars.get('actorRole')=='host'],2,TimeUnit.SECONDS)) {
+   room.pending.decrementAndGet();throw new IllegalStateException('Очередь опроса переполнена')
+  }
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+            </JSR223Sampler>
+            <hashTree />
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Ожидание | start" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">wait-start</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'wait-start':
+  vars.put('waitMore','true')
+  vars.put('waitKind',action)
+  long seconds=action=='wait-members' ? vars.get('joinTimeoutSeconds').toLong() : vars.get('votingTimeoutSeconds').toLong()
+  vars.put('waitUntil',(System.currentTimeMillis()+seconds*1000L).toString())
+  if(action=='wait-finished') room.hostPaused.set(true)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+            </JSR223Sampler>
+            <hashTree />
+            <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Ждать | start" enabled="true">
+              <stringProp name="WhileController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; !vars.getObject('roomJob').cancelled.get() &amp;&amp; vars.get('waitMore') == 'true' &amp;&amp; System.currentTimeMillis() &lt; vars.get('waitUntil').toLong())}</stringProp>
+            </WhileController>
+            <hashTree>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SSE | Ждать start" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="filename" />
+                <stringProp name="parameters" />
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def room=vars.getObject('roomJob')
+long deadline=vars.get('waitUntil').toLong()
+def state=null;boolean ready=false
+while(!room.cancelled.get() &amp;&amp; System.currentTimeMillis()&lt;deadline){
+ state=room.streams.get(vars.get('userId'))
+ ready=state!=null &amp;&amp; (state.status!='waiting')
+ if(ready)break
+ Thread.sleep(100)
+}
+vars.put('waitMore',(!ready).toString())
+SampleResult.setResponseCode(ready?'200':'SSE_TIMEOUT');SampleResult.setSuccessful(ready)
+SampleResult.setResponseData(groovy.json.JsonOutput.toJson(state ?: [:]),'UTF-8')
+</stringProp>
+              </JSR223Sampler>
+              <hashTree>
+                <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Комната | Ждать start" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="filename" />
+                  <stringProp name="parameters">started</stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'started':
+  assert body.id==vars.get('roomId') : 'Ответ другой комнаты'
+  if(args[0]=='started') {
+   vars.put('waitMore',(body.status=='waiting').toString())
+   if(body.status=='waiting') break
+  }
+  assert body.status=='swiping' &amp;&amp; body.roundCandidateIds.size()==12 : 'Нет раунда из 12 карточек'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+                </JSR223Assertion>
+                <hashTree />
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Извлечь candidate" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">candidate</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.roundCandidateIds[*]</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues" />
+                </JSONPostProcessor>
+                <hashTree />
+              </hashTree>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Проверить предел ожидания" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">check-wait</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'check-wait':
+  if(vars.get('waitMore')=='true') throw new IllegalStateException('Тайм-аут '+vars.get('waitKind'))
+  room.hostPaused.set(false)
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+            </JSR223Sampler>
+            <hashTree />
+            <ForeachController guiclass="ForeachControlPanel" testclass="ForeachController" testname="Голосование | Карточки раунда" enabled="true">
+              <stringProp name="ForeachController.inputVal">candidate</stringProp>
+              <stringProp name="ForeachController.returnVal">venueId</stringProp>
+              <stringProp name="ForeachController.startIndex">0</stringProp>
+              <stringProp name="ForeachController.useSeparator">true</stringProp>
+            </ForeachController>
+            <hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Голосовать | Пока нет ошибки" enabled="true">
+                <stringProp name="IfController.condition">${__groovy(vars.get('ok') == 'true' &amp;&amp; (vars.getObject('roomJob') == null || !vars.getObject('roomJob').cancelled.get()))}</stringProp>
+                <boolProp name="IfController.useExpression">true</boolProp>
+                <boolProp name="IfController.evaluateAll">true</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Голос | PUT votes" enabled="true">
+                  <stringProp name="HTTPSampler.path">/v1/rooms/${roomId}/votes</stringProp>
+                  <stringProp name="HTTPSampler.method">PUT</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{"venueId":"${venueId}","value":"${voteValue}"}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP | Заголовки" enabled="true">
+                    <collectionProp name="HeaderManager.headers">
+                      <elementProp name="Accept" elementType="Header">
+                        <stringProp name="Header.name">Accept</stringProp>
+                        <stringProp name="Header.value">application/json</stringProp>
+                      </elementProp>
+                      <elementProp name="Content-Type" elementType="Header">
+                        <stringProp name="Header.name">Content-Type</stringProp>
+                        <stringProp name="Header.value">application/json</stringProp>
+                      </elementProp>
+                      <elementProp name="Authorization" elementType="Header">
+                        <stringProp name="Header.name">Authorization</stringProp>
+                        <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+                      </elementProp>
+                      <elementProp name="Idempotency-Key" elementType="Header">
+                        <stringProp name="Header.name">Idempotency-Key</stringProp>
+                        <stringProp name="Header.value">vote:${roomId}:${userId}:${venueId}</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </HeaderManager>
+                  <hashTree />
+                  <JSR223Assertion guiclass="TestBeanGUI" testclass="JSR223Assertion" testname="Проверка | Голос | PUT votes" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="filename" />
+                    <stringProp name="parameters">vote</stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">import groovy.json.JsonSlurper
+def room=vars.getObject('roomJob')
+try {
+ if(!(prev.responseCode in ['200','201'])) throw new IllegalStateException('HTTP '+prev.responseCode+' на шаге '+args[0])
+ def body=new JsonSlurper().parseText(prev.getResponseDataAsString())
+ switch(args[0]) {
+ case 'vote':
+  assert body.id==vars.get('roomId') &amp;&amp; body.ownVotes[vars.get('venueId')]==vars.get('voteValue') : 'Голос не сохранился'
+  break
+ }
+} catch(Throwable e) {
+ AssertionResult.setFailure(true)
+ AssertionResult.setFailureMessage(e.message ?: e.class.simpleName)
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+}
+</stringProp>
+                  </JSR223Assertion>
+                  <hashTree />
+                  <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Выбрать like или dislike" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="filename" />
+                    <stringProp name="parameters" />
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">def random=java.util.concurrent.ThreadLocalRandom.current()
+vars.put('voteValue',vars.get('venueId')==vars.get('candidate_1') || random.nextBoolean() ? 'like' : 'dislike')
+</stringProp>
+                  </JSR223PreProcessor>
+                  <hashTree />
+                  <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Просмотр карточки | Случайная пауза" enabled="true">
+                    <stringProp name="ConstantTimer.delay">${votePauseMs}</stringProp>
+                    <stringProp name="RandomTimer.range">${voteSpreadMs}</stringProp>
+                  </UniformRandomTimer>
+                  <hashTree />
+                </hashTree>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="SSE | Динамический пул" enabled="true">
+        <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController" />
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="TargetLevel">${__groovy(def r=props.get('kudaLoad');if(System.currentTimeMillis()&gt;=r.hardEnd || System.currentTimeMillis()&gt;r.end &amp;&amp; r.active.get()==0 &amp;&amp; r.members.isEmpty() &amp;&amp; r.polls.isEmpty())return 0;int i=(int)((System.currentTimeMillis()-r.phaseStart)/(r.stepSeconds*1000L));if(i&gt;=r.rates.size())i=r.rates.size()-1;int n=(int)Math.ceil((r.continuous?r.workerRate.get():r.rates[i])*14.95);int cap=(props.getProperty('pollThreads')?:'240').toInteger();n&gt;cap?cap:n)}</stringProp>
+        <stringProp name="RampUp" />
+        <stringProp name="Steps" />
+        <stringProp name="Hold">${__groovy(props.get('kudaLoad').durationSeconds)}</stringProp>
+        <stringProp name="LogFilename" />
+        <stringProp name="Iterations">1</stringProp>
+        <boolProp name="same_user_on_next_iteration">true</boolProp>
+        <stringProp name="Unit">S</stringProp>
+      </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+      <hashTree>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="Пока есть работа" enabled="true">
+          <stringProp name="WhileController.condition">${workerRunning}</stringProp>
+        </WhileController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Забрать задание опроса" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="filename" />
+            <stringProp name="parameters">take-poll</stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+
+if(run.stopFile.exists() &amp;&amp; !run.stopApplied.getAndSet(true)) {
+ run.end=System.currentTimeMillis(); run.hardEnd=run.end+vars.get('drainSeconds').toLong()*1000L
+}
+// Snapshot every ten seconds; this does not add HTTP traffic.
+def telemetryNow=System.currentTimeMillis()
+def telemetryNext=run.telemetryNext.get()
+if(telemetryNow&gt;=telemetryNext &amp;&amp; run.telemetryNext.compareAndSet(telemetryNext,telemetryNow+10000L)) {
+ def memberHead=run.members.peek();def pollHead=run.polls.peek()
+ def data=[active_streams:run.streams.get(),stream_errors:run.streamErrors.get(),stream_reconnects:run.streamReconnects.get(),stream_events:run.streamEvents.get(),timestamp_seconds:telemetryNow/1000d,phase_started_seconds:run.phaseStart/1000d,active_rooms:run.active.get(),started_rooms:run.started.get(),completed_rooms:run.completed.get(),failed_rooms:run.failed.get(),member_queue:run.members.size(),poll_queue:run.polls.size(),member_queue_oldest_seconds:memberHead==null?0:Math.max(0L,telemetryNow-memberHead.queuedAt)/1000d,poll_queue_oldest_seconds:pollHead==null?0:Math.max(0L,telemetryNow-pollHead.queuedAt)/1000d]
+ synchronized(run.lock) { run.telemetry.setText(JsonOutput.toJson(data),'UTF-8') }
+}
+
+ switch(action) {
+ case 'take-poll':
+  def queue=action=='take-member' ? run.members : run.polls
+  if(System.currentTimeMillis()&gt;=run.hardEnd){vars.put('workerRunning','false');vars.put('hasJob','false');SampleResult.setIgnore();return}
+  if(System.currentTimeMillis()&gt;run.end &amp;&amp; run.active.get()==0 &amp;&amp; queue.isEmpty()) {
+   vars.put('workerRunning','false'); vars.put('hasJob','false'); break
+  }
+  def job=queue.poll(5,TimeUnit.SECONDS)
+  vars.put('hasJob','false')
+  if(job==null) break
+  room=job.room
+  vars.putObject('roomJob',room)
+  if(room.cancelled.get()) {
+   if(action=='take-poll') room.pending.decrementAndGet()
+   break
+  }
+  vars.put('hasJob','true');vars.put('ok','true')
+  vars.put('roomId',room.id);vars.put('inviteToken',room.invite)
+  if(action=='take-member') {
+   vars.put('actorRole','member')
+   vars.put('authToken','')
+   vars.put('guestName','НТ участник '+job.number+' '+UUID.randomUUID().toString().take(8))
+  } else {
+   vars.put('authToken',job.token);vars.put('userId',job.userId)
+   vars.put('hostPoll',job.host.toString());vars.put('sawWinner','false')
+  }
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+          </JSR223Sampler>
+          <hashTree />
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Получено задание опроса" enabled="true">
+            <stringProp name="IfController.condition">${hasJob}</stringProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="SSE | Читать изменения комнаты" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters" />
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+import java.net.HttpURLConnection
+
+def run=props.get('kudaLoad');def room=vars.getObject('roomJob')
+String uid=vars.get('userId');String token=vars.get('authToken')
+HttpURLConnection connection=null
+run.streams.incrementAndGet()
+try {
+ boolean connected=false
+ while(!room.cancelled.get() &amp;&amp; System.currentTimeMillis()&lt;room.end){
+  try {
+   URL url=new URL(vars.get('protocol')+'://'+vars.get('host')+':'+vars.get('port')+'/v1/rooms/'+room.id+'/events')
+   connection=(HttpURLConnection)url.openConnection()
+   connection.setRequestProperty('Authorization','Bearer '+token)
+   connection.setRequestProperty('Accept','text/event-stream')
+   connection.setConnectTimeout(vars.get('responseTimeoutMs').toInteger());connection.setReadTimeout(20000)
+   if(connection.responseCode!=200) throw new IllegalStateException('SSE HTTP '+connection.responseCode)
+   if(connected) run.streamReconnects.incrementAndGet()
+   connected=true
+   def reader=new BufferedReader(new InputStreamReader(connection.inputStream,'UTF-8'))
+   String event=''
+   while(!room.cancelled.get() &amp;&amp; System.currentTimeMillis()&lt;room.end){
+    String line=reader.readLine();if(line==null)break
+    if(line.startsWith('event: '))event=line.substring(7)
+    if(line.startsWith('data: ') &amp;&amp; event=='room'){
+     def state=new JsonSlurper().parseText(line.substring(6))
+     if(state.id!=room.id)throw new IllegalStateException('SSE другой комнаты')
+     room.streams.put(uid,state);run.streamEvents.incrementAndGet()
+     if(state.winner &amp;&amp; room.winner.get()){
+      if(state.winner.id!=room.winner.get())throw new IllegalStateException('SSE другой победитель')
+      vars.put('sawWinner','true')
+     }
+    }
+    if(event=='access_revoked')throw new IllegalStateException('SSE доступ отозван')
+   }
+   reader.close()
+  } finally {if(connection!=null)connection.disconnect()}
+  if(!room.cancelled.get() &amp;&amp; System.currentTimeMillis()&lt;room.end)Thread.sleep(250)
+ }
+ SampleResult.setIgnore()
+} catch(Throwable e){
+ if(!room.cancelled.get()){
+  run.streamErrors.incrementAndGet();room.cancelled.set(true);vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+  SampleResult.setSuccessful(false);SampleResult.setResponseCode('SSE_ERROR');SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+ }else SampleResult.setIgnore()
+} finally {run.streams.decrementAndGet();if(connection!=null)connection.disconnect()}
+</stringProp>
+            </JSR223Sampler>
+            <hashTree />
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Проверить одинакового победителя" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">poll-check</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'poll-check':
+  def seen=room.streams.get(vars.get('userId')); if(seen?.winner?.id==room.winner.get()) vars.put('sawWinner','true')
+  if(!room.cancelled.get() &amp;&amp; vars.get('sawWinner')!='true') throw new IllegalStateException('Пользователь не увидел победителя')
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+            </JSR223Sampler>
+            <hashTree />
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Освободить задание опроса" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="filename" />
+              <stringProp name="parameters">poll-release</stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonOutput
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.atomic.AtomicReference
+def run=props.get('kudaLoad')
+def room=vars.getObject('roomJob')
+String action=args[0]
+try {
+ switch(action) {
+ case 'poll-release':
+  room.pending.decrementAndGet()
+  break
+ }
+ SampleResult.setIgnore()
+} catch(Exception e) {
+ vars.put('ok','false');vars.put('reason',e.message ?: e.class.simpleName)
+ if(room!=null) room.cancelled.set(true)
+ if(action.startsWith('take-')) vars.put('workerRunning','false')
+ SampleResult.setSuccessful(false)
+ SampleResult.setResponseCode('SCENARIO_ERROR')
+ SampleResult.setResponseMessage(e.message ?: e.class.simpleName)
+}
+</stringProp>
+            </JSR223Sampler>
+            <hashTree />
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="Завершение | Итоги компаний" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </PostThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Проверить итог всех комнат" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="filename" />
+          <stringProp name="parameters" />
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">def run=props.get('kudaLoad')
+log.info('Куда: создано '+run.started.get()+', успешно '+run.completed.get()+', ошибок '+run.failed.get())
+if(run.started.get()==0 || run.failed.get()&gt;0 || run.started.get()!=run.completed.get() || !run.members.isEmpty() || !run.polls.isEmpty()) {
+ SampleResult.setSuccessful(false);SampleResult.setResponseCode('ROOMS_INCOMPLETE')
+ SampleResult.setResponseMessage('Есть незавершённые компании; см. rooms.csv')
+} else SampleResult.setIgnore()
+props.remove('kudaLoad');props.remove('kudaMeetingDate')
+</stringProp>
+        </JSR223Sampler>
+        <hashTree />
+      </hashTree>
+      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Результаты | Все операции (CSV)" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">${outDir}/results.csv</stringProp>
+      </ResultCollector>
+      <hashTree />
+      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Результаты | Ошибки (XML)" enabled="true">
+        <boolProp name="ResultCollector.error_logging">true</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>true</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>true</responseData>
+            <samplerData>true</samplerData>
+            <xml>true</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>true</responseHeaders>
+            <requestHeaders>true</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>2</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <fileName>true</fileName>
+            <hostname>true</hostname>
+            <threadCounts>true</threadCounts>
+            <sampleCount>true</sampleCount>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">${outDir}/errors.xml</stringProp>
+      </ResultCollector>
+      <hashTree />
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Отладка | Дерево результатов" enabled="false">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename" />
+      </ResultCollector>
+      <hashTree />
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Сводка | Summary Report" enabled="true" />
+      <hashTree />
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Сводка | Aggregate Report" enabled="true" />
+      <hashTree />
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

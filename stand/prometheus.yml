@@ -1,0 +1,22 @@
+global:
+  scrape_interval: 10s
+  scrape_timeout: 8s
+scrape_configs:
+  - job_name: kuda-api
+    static_configs: [{targets: ['192.168.0.242:8787']}]
+  - job_name: stand-windows
+    static_configs: [{targets: ['192.168.0.242:9183']}]
+  - job_name: stand-docker
+    static_configs: [{targets: ['192.168.0.242:9274']}]
+  - job_name: postgres
+    static_configs: [{targets: ['192.168.0.242:9187']}]
+  - job_name: generator-windows
+    static_configs: [{targets: ['192.168.0.242:9183']}]
+  - job_name: jmeter
+    static_configs: [{targets: ['results-exporter:9199']}]
+  - job_name: prometheus
+    static_configs: [{targets: ['localhost:9090']}]
+
+  - job_name: postgres-diagnostics
+    scrape_interval: 5s
+    static_configs: [{targets: ['192.168.0.242:9200']}]

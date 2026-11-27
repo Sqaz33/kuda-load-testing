@@ -1,0 +1,34 @@
+# Test results, reports and runtime state
+/out/
+/comparison-*/
+*.log
+*.jtl
+/stand/active.json
+/stand/active.tmp
+/stand/latest-run.txt
+/stand/*-current-run.txt
+/stand/*-next-run.txt
+/stand/*.txt
+!/stand/README*.txt
+!/stand/exporter-checksums.txt
+/stand/hybrid-diagnostics-probe.json
+
+# Built images and downloaded dependencies
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.exe
+*.msi
+
+# Local credentials and caches
+.env
+.env.*
+!.env.example
+*secret*.txt
+*credentials*.json
+__pycache__/
+*.pyc
+.venv/
+.idea/
+.vscode/

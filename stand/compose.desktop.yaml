@@ -1,0 +1,45 @@
+services:
+  postgres:
+    command: [postgres, -c, shared_preload_libraries=pg_stat_statements, -c, track_io_timing=on, -c, track_wal_io_timing=on, -c, log_min_duration_statement=250, -c, log_lock_waits=on, -c, log_checkpoints=on, -c, shared_buffers=256MB, -c, max_connections=180]
+    restart: unless-stopped
+    logging: {driver: json-file, options: {max-size: 100m, max-file: '5'}}
+  redis:
+    restart: unless-stopped
+    logging: {driver: json-file, options: {max-size: 20m, max-file: '3'}}
+  migrate:
+    image: venue-backend:nt-local
+    build: !reset null
+  seed:
+    image: venue-backend:nt-local
+    build: !reset null
+  api:
+    image: venue-backend:nt-local
+    build: !reset null
+    environment:
+      DB_MAX_CONNS: '150'
+    ports: !override ['127.0.0.1:8787:8787', '192.168.0.242:8787:8787']
+    restart: unless-stopped
+    logging: {driver: json-file, options: {max-size: 100m, max-file: '5'}}
+  postgres-exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter:v0.18.1
+    environment:
+      DATA_SOURCE_NAME: postgres://kuda:kuda_local_dev@postgres:5432/kuda?sslmode=disable
+    command: [--collector.stat_statements]
+    ports: ['127.0.0.1:9187:9187', '192.168.0.242:9187:9187']
+    depends_on:
+      postgres: {condition: service_healthy}
+    restart: unless-stopped
+    logging: {driver: json-file, options: {max-size: 20m, max-file: '3'}}
+  telegraf:
+    image: telegraf:1.36-alpine
+    user: '0:0'
+    entrypoint: [telegraf]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - D:/kuda-load-testing/stand/telegraf.desktop.conf:/etc/telegraf/telegraf.conf:ro
+    ports: ['127.0.0.1:9274:9274', '192.168.0.242:9274:9274']
+    restart: unless-stopped
+    logging: {driver: json-file, options: {max-size: 20m, max-file: '3'}}
+volumes:
+  postgres-data:
+    name: kuda-nt-desktop-postgres-20261127

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <org.apache.jorphan.collections.HashTree>
+    <com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup guiclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroupGui" testclass="com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup" testname="worker">
+      <elementProp name="ThreadGroup.main_controller" elementType="com.blazemeter.jmeter.control.VirtualUserController"/>
+      <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+      <stringProp name="TargetLevel">10</stringProp>
+      <stringProp name="RampUp"></stringProp>
+      <stringProp name="Steps"></stringProp>
+      <stringProp name="Hold">60</stringProp>
+      <stringProp name="LogFilename"></stringProp>
+      <stringProp name="Iterations"></stringProp>
+      <boolProp name="same_user_on_next_iteration">false</boolProp>
+      <stringProp name="Unit">S</stringProp>
+    </com.blazemeter.jmeter.threads.concurrency.ConcurrencyThreadGroup>
+    <org.apache.jorphan.collections.HashTree/>
+  </org.apache.jorphan.collections.HashTree>
+</jmeterTestPlan>
